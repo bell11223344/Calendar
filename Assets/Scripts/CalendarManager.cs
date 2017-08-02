@@ -61,6 +61,11 @@ public class CalendarManager : MonoBehaviour {
 
 	}
 
+	public void OnClick(Button button)
+	{
+		//Debug.Log (button.index);
+	}
+
 	//コンポーネントの取得、設定
 	void InitCalendarComponent()
 	{
@@ -71,6 +76,7 @@ public class CalendarManager : MonoBehaviour {
 			//コンポーネントを設定、取得
 			Days [i] = objDays [i].AddComponent<CalendarButton> ();
 			Days [i].index = i + 1;
+
 		}
 	}
 

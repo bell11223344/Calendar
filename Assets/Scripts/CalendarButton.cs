@@ -37,6 +37,13 @@ public class CalendarButton : MonoBehaviour {
 					//GetComponent<Image> ().enabled = false;
 				}
 			});
+			
+			button.onClick.AddListener (() => {
+				
+				Debug.Log(text.text);
+				//カレンダーの日をタップするとその日のスケジュールへ遷移
+
+			});
 		}
 	}
 

@@ -81,7 +81,7 @@ public class CalendarManager : MonoBehaviour {
 	}
 
 	//カレンダーに日付をセット
-	void SetCalendar()
+	public void SetCalendar()
 	{
 		int day = 1;
 

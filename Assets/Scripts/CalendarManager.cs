@@ -126,4 +126,11 @@ public class CalendarManager : MonoBehaviour {
 	void InitCalendarTime(){
 		current = new DateTime (DateTime.Today.Year, DateTime.Today.Month, DateTime.Today.Day);
 	}
+
+	public int GetcurrentYear(){
+		return current.Year;
+	}
+	public int GetcurrentMonth(){
+		return current.Month;
+	}
 }

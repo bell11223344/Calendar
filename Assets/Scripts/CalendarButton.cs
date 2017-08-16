@@ -11,6 +11,12 @@ public class CalendarButton : MonoBehaviour {
 	public Button button;
 	public Text text;
 
+	public GameObject canvasObject;
+
+	//public GameObject prefab;
+
+	//public GameObject yoteiPanelPrefab;
+
 	//マスの日時
 	[HideInInspector]public DateTime dateValue;
 	//ボタン番号
@@ -39,12 +45,28 @@ public class CalendarButton : MonoBehaviour {
 			});
 			
 			button.onClick.AddListener (() => {
-				
+
+				PrefabInst("Prefabs/GlayOutPanel");
+				PrefabInst("Prefabs/YoteiPanel");
 				Debug.Log(text.text);
+				//EnterDay = text.text;
+				//Debug.Log("ENTERDAY:"+EnterDay);
+
+				PlayerPrefs.SetString("Day",text.text);
+				PlayerPrefs.SetString("Index",this.index.ToString());
 				//カレンダーの日をタップするとその日のスケジュールへ遷移
 
 			});
 		}
+	}
+
+	void PrefabInst (string str){
+
+		GameObject obj = (GameObject)Resources.Load (str);
+		GameObject prefab = (GameObject)Instantiate(obj);
+		//GameObject yoteiPanel = (GameObject)Instantiate(prefab);
+		//prefab.transform.SetParent(canvasObject.transform,false);
+		prefab.transform.SetParent(UnityEngine.Object.FindObjectOfType<Canvas>().transform,false);
 	}
 
 	//色を指定
@@ -69,6 +91,11 @@ public class CalendarButton : MonoBehaviour {
 			return Color.gray;
 		}
 	}
+	/*
+	public string GetcurrentDay(){
+		return EnterDay.ToString();
+	}
+*/
 }
 //DateTime拡張
 public static class DateTimeExtension
@@ -78,3 +105,5 @@ public static class DateTimeExtension
 	//デフォルトの値と比較
 	public static bool isDefault(this DateTime d) { return d.Equals(Default); }
 }
+
+
